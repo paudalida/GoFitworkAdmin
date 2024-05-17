@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->references('id')->on('subscription');
+            $table->unsignedBigInteger('subscription_id');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
+            $table->date('start_date');
+            $table->enum('status', ['Ongoing', 'Expired'])->default('Ongoing');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

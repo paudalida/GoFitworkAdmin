@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ending', function (Blueprint $table) {
+        Schema::create('endings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->references('id')->on('subscription');
+            $table->unsignedBigInteger('subscription_id');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

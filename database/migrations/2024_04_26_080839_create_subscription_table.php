@@ -11,24 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subscription', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('enquiry_id');
+            $table->foreign('enquiry_id')->references('id')->on('enquiries');
+
             // shift data from enquires database table
-            $table->string('firstname', 30);
-            $table->string('middlename', 30)->nullable();
-            $table->string('lastname', 30);
-            $table->string('extname', 10)->nullable();
-            $table->string('email')->unique();
-            $table->string('barangay', 50);
-            $table->string('gender', 30)->nullable();
-            $table->string('occupation', 50);
-            $table->string('reason', 50)->nullable();
+            // $table->string('firstname', 30);
+            // $table->string('lastname', 30);
+            // $table->string('email')->unique();
+            // $table->string('barangay', 50);
+            // $table->string('gender', 30)->nullable();
+            // $table->string('occupation', 50);
+            // $table->string('reason', 50)->nullable();
 
             // subscription data
             $table->decimal('subscription_fee', 10, 2);
             //$table->date('payment_date');
-            $table->string('payment_status');
+            //$table->string('payment_status');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('status');

@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('enquiries', function (Blueprint $table) {
             $table->id();
             $table->string('firstname', 30);
-            $table->string('middlename', 30)->nullable();
             $table->string('lastname', 30);
-            $table->string('extname', 10)->nullable();
             //$table->integer('phone_number')->nullable();
             $table->string('email')->unique();
             $table->string('barangay', 50);

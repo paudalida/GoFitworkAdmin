@@ -18,7 +18,6 @@ class EnquiriesFactory extends Factory
     {
         return [
             'firstname' => fake()->firstName(),
-            'middlename' => fake()->lastName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'barangay' => fake()->randomElement(['West Tapinac', 'East Tapinac', 'Gordon Heights']),

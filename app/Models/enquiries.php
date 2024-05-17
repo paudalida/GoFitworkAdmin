@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class enquiries extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['firstname', 'lastname', 'email', 'barangay', 'gender', 'occupation', 'start_by', 'reason'];
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
 }
